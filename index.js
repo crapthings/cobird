@@ -27,15 +27,28 @@ const proxyResponder = new cote.Responder({
 })
 
 proxyResponder.on('cote:added', (args, cb) => {
-  const { advertisement: { source, target } } = args
-  proxy.unregister(source, target)
-  proxy.register(source, target)
-  services[target] = { source, target, checkedAt: new Date() }
+  console.log(args)
+  try {
+    const { advertisement: { source, target } } = args
+    proxy.unregister(source, target)
+    proxy.register(source, target)
+    services[target] = { source, target, checkedAt: new Date() }
+  } catch (ex) {
+
+  }
 })
 
 proxyResponder.on('cote:removed', (args, cb) => {
-  const { advertisement: { source, target } } = args
-  axiosGet({ source, target })
+  try {
+    const { advertisement: { source, target } } = args
+    axiosGet({ source, target })
+  } catch (ex) {
+
+  }
+})
+
+proxyResponder.on('*', (args, cb) => {
+  console.log(1)
 })
 
 setInterval(() => {
