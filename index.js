@@ -18,7 +18,7 @@ server.get('/_services', function (req, res) {
 })
 
 server.listen(9999, function () {
-  console.log('Proxy Service is listening on 666')
+  console.log('Proxy Service is listening on 9999')
 })
 
 const proxyResponder = new cote.Responder({
@@ -45,10 +45,6 @@ proxyResponder.on('cote:removed', (args, cb) => {
   } catch (ex) {
 
   }
-})
-
-proxyResponder.on('*', (args, cb) => {
-  console.log(1)
 })
 
 setInterval(() => {
