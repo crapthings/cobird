@@ -17,7 +17,7 @@ server.get('/_services', function (req, res) {
   return res.json(services)
 })
 
-server.listen(666, function () {
+server.listen(9999, function () {
   console.log('Proxy Service is listening on 666')
 })
 
