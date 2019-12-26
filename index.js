@@ -29,7 +29,7 @@ const proxyResponder = new cote.Responder({
 proxyResponder.on('cote:added', (args, cb) => {
   console.log(args)
   try {
-    const { address, advertisement: { source, target, port } } = args
+    let { address, advertisement: { source, target, port } } = args
     target = `http://${address}:port/${target}`
     proxy.unregister(source, target)
     proxy.register(source, target)
@@ -42,7 +42,7 @@ proxyResponder.on('cote:added', (args, cb) => {
 
 proxyResponder.on('cote:removed', (args, cb) => {
   try {
-    const { advertisement: { source, target, port } } = args
+    let { advertisement: { source, target, port } } = args
     target = `http://${address}:port/${target}`
     axiosGet({ source, target })
     console.log('removed', target)
