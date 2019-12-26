@@ -30,7 +30,7 @@ proxyResponder.on('cote:added', (args, cb) => {
   console.log(args)
   try {
     let { address, advertisement: { source, target, port } } = args
-    target = `http://${address}:${port}/${target}`
+    target = `http://${address}:${port}${target}`
     proxy.unregister(source, target)
     proxy.register(source, target)
     services[target] = { source, target, checkedAt: new Date() }
@@ -43,7 +43,7 @@ proxyResponder.on('cote:added', (args, cb) => {
 proxyResponder.on('cote:removed', (args, cb) => {
   try {
     let { advertisement: { source, target, port } } = args
-    target = `http://${address}:${port}/${target}`
+    target = `http://${address}:${port}${target}`
     axiosGet({ source, target })
     console.log('removed', target)
   } catch (ex) {
