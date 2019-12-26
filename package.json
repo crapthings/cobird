@@ -2,10 +2,13 @@
   "name": "@crapthings/cobird",
   "version": "0.0.1",
   "description": "cote & redbird",
-  "main": "index.js",
   "keywords": [],
   "author": "crapthings",
   "license": "MIT",
+  "main": "index.js",
+  "script": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "axios": "^0.19.0",
     "cote": "^0.21.1",
