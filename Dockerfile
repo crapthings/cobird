@@ -5,4 +5,7 @@ RUN npm install --verbose
 
 COPY . .
 
+EXPOSE 80
+EXPOSE 666
+
 CMD ["npm", "start"]
