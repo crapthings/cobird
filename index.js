@@ -29,7 +29,8 @@ const proxyResponder = new cote.Responder({
 proxyResponder.on('cote:added', (args, cb) => {
   console.log(args)
   try {
-    const { advertisement: { source, target } } = args
+    const { address, advertisement: { source, target, port } } = args
+    target = `http://${address}:port/${target}`
     proxy.unregister(source, target)
     proxy.register(source, target)
     services[target] = { source, target, checkedAt: new Date() }
